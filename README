@@ -1,0 +1,5 @@
+Go has its own model of process/threads/light-weight processes/coroutines, this are called goroutines. Channel communication is the main method of synchronization between goroutines. There are buffered and unbuffered channels. Both types of channels block on receive. Unbuffered channels block on send, buffered channels block on send once the buffer is full.
+
+I've created some test code based on the sample provided in the documentation in case someone else want's to play poke black-box-style at the memory model. Channel 'events' cause memory synchronization to occur. But as the documentation describes you need to be careful with buffered channels, the synchronization occurs during receive not send. If you play around with it a bit you'll see the importance of using Locks, although you'd probably want to rely on the flexibility, safety and abstraction offered by Channels.
+
+Enjoy.
